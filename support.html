@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RADMX Contact</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: Jost, sans-serif;
+            background-color: #000;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar, footer {
+            height: 80px; 
+            padding: 20px 20px; 
+        }
+        .logo img {
+            height: 40px;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        .header-icons {
+            display: flex;
+            gap: 10px;
+        }
+        .header-icons img {
+            height: 22px;
+            width: 22px;
+        }
+        .contact-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+        }
+        .contact-form {
+            background: #111;
+            padding: 20px;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 500px;
+        }
+        .contact-form h2 {
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            background: #000;
+            border: 1px solid white;
+            color: white;
+            border-radius: 4px;
+        }
+        .contact-form button {
+            background-color: white;
+            color: black;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .payment-icons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .follow-btn {
+            text-align: center; 
+            margin: 10px auto;  
+            display: flex;
+            justify-content: center;
+}
+
+        .follow-btn a {
+            text-decoration: none;
+        }
+
+        .follow-btn button {
+            background-color: #6a00f4;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background 0.3s ease;
+        }
+    
+        .follow-btn button:hover {
+            background-color: #5200c8;
+        }
+        
+        .quick-links {
+            padding: 20px;
+            text-align: center; 
+        }
+    
+        .quick-links h1 {
+            font-size: 1.5rem; 
+            margin-bottom: 10px;
+        }
+
+        .quick-links a {
+            color: white;
+            text-decoration: underline;
+            display: block; 
+            font-size: 1rem;
+            margin-top: 5px; 
+    }
+    </style>
+</head>
+<body>
+    <header class="navbar flex justify-between items-center">
+        <div class="logo">
+            <img src="toplogo.png" alt="RADMX Logo">
+        </div>
+        <nav>
+            <ul class="flex space-x-4">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="storepage.html">All Products</a></li>
+                <li><a href="support.html">Support</a></li>
+            </ul>
+        </nav>
+        <div class="header-icons">
+            <a href="signup.html"><img src="account.png"/></a>
+            <a href="cart.html"><img src="cart.png"/></a>
+        </div>
+    </header>
+    
+    <main class="contact-container">
+        <div class="contact-form">
+            <h2>Need Help? Contact Us Below or Email us @</h2>
+            <p class="mb-4 font-semibold">radmxracing@gmail.com</p>
+            <form action="https://formspree.io/f/xzzezklk" method="POST">
+                <input type="text" name="name" placeholder="Name" required>
+                <input type="email" name="email" placeholder="Email *" required>
+                <input type="text" name="phone" placeholder="Phone number">
+                <textarea name="message" placeholder="Comment" rows="4" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </main>
+    <div class="quick-links">
+            <b><h1>Quick links</h1></b>
+            <a href="#">Search</a>
+        </div>
+        <div class="follow-btn">
+    <a href="https://www.instagram.com/cryostax?igsh=NTc4MTIwNjQ2YQ%3D%3D&utm_source=qr" target="_blank">
+        <button>Follow on Instagram</button>
+    </a>
+</div>
+    
+    
+    <footer class="text-center py-4">
+        <p>&copy; 2025, RADMX Racing Powered by Shopify</p>
+        <a href="#">Privacy policy</a> | <a href="#">Refund policy</a>
+        <div class="payment-icons">
+            <img src="https://img.icons8.com/color/48/000000/amex.png"/> 
+            <img src="https://img.icons8.com/color/48/000000/apple-pay.png"/>
+            <img src="https://img.icons8.com/color/48/000000/discover.png"/>
+            <img src="https://img.icons8.com/color/48/000000/google-pay.png"/>
+            <img src="https://img.icons8.com/color/48/000000/mastercard-logo.png"/>
+            <img src="https://img.icons8.com/color/48/000000/shopify.png"/>
+            <img src="https://img.icons8.com/color/48/000000/visa.png"/>
+        </div>
+    </footer>
+
+    <!-- Elfsight AI Chatbot -->
+    <script src="https://static.elfsight.com/platform/platform.js" async></script>
+    <div class="elfsight-app-7c94cc5c-9114-4dd8-bb1f-0e68caabc0e3" data-elfsight-app-lazy></div>
+</body>
+</html>

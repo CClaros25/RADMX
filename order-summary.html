@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order Processing</title>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: Jost, sans-serif;
+      background-color: #111;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #000;
+      padding: 1rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+      text-align: center;
+    }
+
+    .logo img {
+      height: 40px;
+    }
+
+    .order-container {
+      display: flex;
+      justify-content: space-between;
+      padding: 2rem;
+    }
+
+    /* Sidebar styles */
+    .sidebar {
+      background-color: #222;
+      width: 250px;
+      padding: 2rem;
+      border-radius: 10px;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+    }
+
+    .sidebar h2 {
+      color: #6a00f4;
+      margin-bottom: 1.5rem;
+    }
+
+    .status-item {
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .status-item .status {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: #6a00f4;
+    }
+
+    .status-item.completed .status {
+      background-color: #00ff00; /* Green for completed stages */
+    }
+
+    .status-item.in-progress .status {
+      background-color: #ff9800; /* Orange for current stage */
+    }
+
+    .order-status {
+      flex: 2;
+      background-color: #222;
+      padding: 2rem;
+      border-radius: 10px;
+    }
+
+    .order-status h1 {
+      color: #6a00f4;
+      margin-bottom: 1.5rem;
+    }
+
+    footer {
+      background-color: #111;
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+
+    /* Style for the centered button */
+    .centered-btn {
+      display: block;
+      width: 200px;
+      margin: 2rem auto;
+      padding: 1rem;
+      text-align: center;
+      background-color: #6a00f4;
+      color: #fff;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .centered-btn:hover {
+      background-color: #5200b8;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="toplogo.png" alt="Logo" />
+    </div>
+  </header>
+
+  <div class="order-container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h2>Order Status</h2>
+      <div class="status-item in-progress">
+        <span>Processing</span>
+        <div class="status"></div>
+      </div>
+      <div hidden>
+      <div class="status-item">
+        <span>Shipped</span>
+        <div class="status"></div>
+      </div>
+      </div>
+    </div>
+
+    <!-- Main content -->
+    <div class="order-status">
+      <h1>Your Order is Being Processed</h1>
+      <p>Your payment has been successfully processed. We are currently preparing your items for shipping.</p>
+      <p>If you have any questions, feel free to contact our support team or check you email for more details.</p>
+
+      <!-- Centered Return to Home Button -->
+      <button class="centered-btn" onclick="clearCartAndReturnHome()">Return to Home</button>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025, RADMX Racing Powered by Shopify</p>
+    <a href="#">Privacy policy</a> | <a href="#">Refund policy</a>
+  </footer>
+
+  <script>
+    // Function to clear the cart from localStorage and redirect to home page
+    function clearCartAndReturnHome() {
+      // Clear the cart from localStorage
+      localStorage.removeItem('cart');
+      
+      // Redirect to the home page
+      window.location.href = 'index.html';
+    }
+
+    // Update status on page load (you can later make this dynamic depending on the order state)
+    document.querySelectorAll('.status-item').forEach((statusItem, index) => {
+      if (index === 0) {
+        statusItem.classList.add('in-progress');
+      } else if (index === 1) {
+        statusItem.classList.add('completed');
+      }
+    });
+  </script>
+
+</body>
+</html>

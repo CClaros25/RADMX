@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Cart</title>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: Jost, sans-serif;
+      background-color: #000;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #000;
+    }
+    .logo img {
+      height: 40px;
+    }
+    nav a {
+      margin: 0 1rem;
+      color: #fff;
+      text-decoration: none;
+    }
+    .header-icons a {
+      margin-left: 1rem;
+    }
+    .header-icons img {
+      vertical-align: middle;
+      height: 22px;
+      width: 22px;
+    }
+    .cart-container {
+      padding: 2rem;
+    }
+    .cart-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid #444;
+      padding-bottom: 1rem;
+    }
+    .cart-item img {
+      width: 80px;
+      height: auto;
+      border-radius: 6px;
+    }
+    .cart-item-details {
+      flex: 1;
+      padding-left: 1rem;
+    }
+    .cart-item-details h3 {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+    .cart-item-details p {
+      margin: 0.3rem 0;
+    }
+    .cart-item-quantity {
+      display: flex;
+      align-items: center;
+    }
+    .cart-item-quantity input {
+      width: 50px;
+      padding: 0.5rem;
+      background-color: #111;
+      color: #fff;
+      border: 1px solid #444;
+      border-radius: 5px;
+    }
+    .cart-item-quantity button {
+      padding: 0.5rem 1rem;
+      background-color: #333;
+      color: #fff;
+      border: 1px solid #444;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .total {
+      font-size: 1.5rem;
+      margin-top: 2rem;
+    }
+    .checkout-btn {
+      background-color: #6a00f4;
+      border: none;
+      padding: 1rem;
+      font-size: 1.2rem;
+      width: 100%;
+      cursor: pointer;
+      color: #fff;
+    }
+    footer {
+      background-color: #000;
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+    .summary-btn {
+  background-color: #6a00f4;
+  border: none;
+  padding: 1rem;
+  font-size: 1.2rem;
+  width: 30%; /* Adjust to your desired width */
+  cursor: pointer;
+  color: #fff;
+  margin: 1rem auto; /* Center the button horizontally and add margin on top and bottom */
+  border-radius: 5px;
+  display: block; /* Ensures the button is treated as a block element */
+  text-align: center;
+}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="toplogo.png" alt="Logo" />
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="storepage.html">All Products</a>
+      <a href="support.html">Support</a>
+    </nav>
+    <div class="header-icons">
+      <a href="signup.html"><img src="account.png" alt="Account" /></a>
+      <a href="cart.html"><img src="cart.png" alt="Cart" /></a>
+    </div>
+  </header>
+
+  <div class="cart-container">
+    <h1>Your Cart</h1>
+    <div id="cartItemsList"></div>
+    <div class="total" id="totalAmount">Total: $0.00</div>
+    <a href="checkout.html"><button class="checkout-btn">Checkout</button></a>
+    <a href="order-summary.html">
+  <button class="summary-btn">Summary</button>
+</a>
+  </div>
+
+  <footer>
+    <p>&copy; 2025, RADMX Racing Powered by Shopify</p>
+    <a href="#">Privacy policy</a> | <a href="#">Refund policy</a>
+  </footer>
+
+  <script>
+    const cartItemsList = document.getElementById('cartItemsList');
+    const totalAmount = document.getElementById('totalAmount');
+
+    // Create image path based on product name
+    function getImageSrc(productName) {
+      if (!productName) return 'image.jpeg';
+      const formattedName = productName.toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]/g, '');
+      return `images/${formattedName}.jpeg`;
+    }
+
+    function updateCart() {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cartItemsList.innerHTML = '';
+      
+      let total = 0;
+      cart.forEach(item => {
+        const itemDiv = document.createElement('div');
+        itemDiv.classList.add('cart-item');
+        
+        const imageSrc = getImageSrc(item.productName);
+
+        // Conditional rendering of grip and connector
+        const gripText = item.grip ? `Grip: ${item.grip}` : '';
+        const connectorText = item.connector ? `Connector: ${item.connector}` : '';
+
+        itemDiv.innerHTML = `
+          <img src="${imageSrc}" alt="${item.productName}" onerror="this.onerror=null;this.src='image.jpeg';">
+          <div class="cart-item-details">
+            <h3>${item.productName}</h3>
+            <p>${gripText}</p>
+            <p>${connectorText}</p>
+            <p>Price: $${item.price}</p>
+          </div>
+          <div class="cart-item-quantity">
+            <input type="number" value="${item.quantity}" min="1" class="quantity-input" data-item-name="${item.productName}">
+            <button class="remove-item-btn" data-item-name="${item.productName}"><i class="fas fa-trash-alt"></i> Remove</button>
+          </div>
+        `;
+
+        cartItemsList.appendChild(itemDiv);
+        total += item.price * item.quantity;
+      });
+
+      totalAmount.innerText = `Total: $${total.toFixed(2)}`;
+    }
+
+    cartItemsList.addEventListener('click', e => {
+      const removeButton = e.target.closest('.remove-item-btn');
+      if (removeButton) {
+        const itemName = removeButton.dataset.itemName;
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart = cart.filter(item => item.productName !== itemName);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCart();
+      }
+    });
+
+    updateCart();
+  </script>
+</body>
+</html>
