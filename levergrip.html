@@ -134,24 +134,26 @@
       
       <label for="quantityInput">Quantity</label>
       <input type="number" id="quantityInput" min="1" value="1" />
+      
       <label for="colorSelect">Color</label>
       <select id="colorSelect" class="dwn-menu">
-          <option value="White">White</option>
-          <option value="Red">Red</option>
-          <option value="Black">Black</option>
-          <option value="Blue">Blue</option>
-          <option value="Green">Green</option>
+        <option value="White">White</option>
+        <option value="Red">Red</option>
+        <option value="Black">Black</option>
+        <option value="Blue">Blue</option>
+        <option value="Green">Green</option>
       </select>
 
       <div class="price" id="priceDisplay">$3.99 USD</div>
       <button class="sold-out-btn" id="addToCartBtn">Add to Cart</button>
+      
       <div class="description">
         <p>The bike brake levers protector is designed ergonomically, and its fine processed outside offer better gripping performances. And adopts a non-slip designs, which ensures grips are tightly fixed onto brake levers.</p>
       </div>
     </div>
 
     <div class="product-gallery">
-      <img id="mainImage" src="lever.jpeg" >
+      <img id="mainImage" src="lever.jpeg" alt="Main Image">
       <div class="thumbnail-row">
         <img src="lever.jpeg" alt="Thumb 1" class="thumbnail"/>
         <img src="whitelever.jpeg" alt="Thumb 2" class="thumbnail"/>
@@ -181,50 +183,47 @@
   <script src="https://static.elfsight.com/platform/platform.js" async></script>
   <div class="elfsight-app-7c94cc5c-9114-4dd8-bb1f-0e68caabc0e3" data-elfsight-app-lazy></div>
 
-  <!-- Fixed Add to Cart Script -->
+  <!-- Custom JS -->
   <script>
-    <script>
-  const addToCartBtn = document.getElementById('addToCartBtn');
-  const quantityInput = document.getElementById('quantityInput');
-  const priceDisplay = document.getElementById('priceDisplay');
-  const colorSelect = document.getElementById('colorSelect');
-  const productPrice = 3.99;
+    const addToCartBtn = document.getElementById('addToCartBtn');
+    const quantityInput = document.getElementById('quantityInput');
+    const priceDisplay = document.getElementById('priceDisplay');
+    const colorSelect = document.getElementById('colorSelect');
+    const productPrice = 3.99;
 
-  // Set initial price
-  priceDisplay.textContent = `$${productPrice.toFixed(2)} USD`;
+    // Set initial price
+    priceDisplay.textContent = `$${productPrice.toFixed(2)} USD`;
 
-  // Add to cart functionality
-  addToCartBtn.addEventListener('click', () => {
-    const quantity = parseInt(quantityInput.value);
-    const selectedColor = colorSelect.value;
-    const totalPrice = productPrice * quantity;
+    // Add to cart functionality
+    addToCartBtn.addEventListener('click', () => {
+      const quantity = parseInt(quantityInput.value);
+      const selectedColor = colorSelect.value;
+      const totalPrice = productPrice * quantity;
 
-    const cartItem = {
-      productName: 'Ebike Brake Lever Grip',
-      quantity: quantity,
-      color: selectedColor,
-      price: productPrice,
-      totalPrice: totalPrice,
-      image: 'lever.jpeg'
-    };
+      const cartItem = {
+        productName: 'Ebike Brake Lever Grip',
+        quantity: quantity,
+        color: selectedColor,
+        price: productPrice,
+        totalPrice: totalPrice,
+        image: document.getElementById('mainImage').src
+      };
 
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    cart.push(cartItem);
-    localStorage.setItem('cart', JSON.stringify(cart));
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.push(cartItem);
+      localStorage.setItem('cart', JSON.stringify(cart));
 
-    alert(`${quantity} ${selectedColor} Brake Lever Grip(s) added to cart!`);
-  });
-
-  // Thumbnail Switcher
-  const thumbnails = document.querySelectorAll('.thumbnail');
-  const mainImage = document.getElementById('mainImage');
-
-  thumbnails.forEach(thumbnail => {
-    thumbnail.addEventListener('click', () => {
-      mainImage.src = thumbnail.src;
+      alert(`${quantity} ${selectedColor} Brake Lever Grip(s) added to cart!`);
     });
-  });
-</script>
+
+    // Thumbnail Switcher + Sync Color Option
+    const thumbnails = document.querySelectorAll('.thumbnail');
+    const mainImage = document.getElementById('mainImage');
+
+    thumbnails.forEach(thumbnail => {
+      thumbnail.addEventListener('click', () => {
+        mainImage.src = thumbnail.src;
+    });
   </script>
 </body>
 </html>
