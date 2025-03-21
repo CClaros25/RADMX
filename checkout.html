@@ -281,14 +281,18 @@
     const totalAmount = document.getElementById('totalAmount');
     let total = 0;
 
-    cartItems.forEach(item => {
-      const listItem = document.createElement('p');
-      listItem.textContent = `${item.name} - $${item.price.toFixed(2)} x ${item.quantity}`;
-      cartItemsList.appendChild(listItem);
-      total += item.price * item.quantity;
-    });
-
-    totalAmount.textContent = `Total: $${total.toFixed(2)}`;
+    if (cartItems.length > 0) {
+      cartItems.forEach(item => {
+        const listItem = document.createElement('p');
+        listItem.textContent = `${item.name} - $${item.price.toFixed(2)} x ${item.quantity}`;
+        cartItemsList.appendChild(listItem);
+        total += item.price * item.quantity;
+      });
+      totalAmount.textContent = `Total: $${total.toFixed(2)}`;
+    } else {
+      cartItemsList.innerHTML = '<p>Your cart is empty.</p>';
+      totalAmount.textContent = `Total: $0.00`;
+    }
   </script>
 </body>
 </html>
