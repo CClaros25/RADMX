@@ -175,7 +175,7 @@
         const bodyColorText = item.bodyColor ? `Body Color: ${item.bodyColor}` : '';
         const ribColorText = item.ribColor ? `Rib Color: ${item.ribColor}` : '';
         const sideColorText = item.sideColor ? `Side Color: ${item.sideColor}` : '';
-        const typeColorText = item.typeColor ? `Type Color: ${item.typeColor}` : '';
+        const typeText = item.type ? `Type: ${item.type}` : '';
 
         itemDiv.innerHTML = `
           <img src="${imageSrc}" alt="${item.productName}" onerror="this.onerror=null;this.src='image.jpeg';">
@@ -184,7 +184,7 @@
             ${bodyColorText ? `<p>${bodyColorText}</p>` : ''}
             ${ribColorText ? `<p>${ribColorText}</p>` : ''}
             ${sideColorText ? `<p>${sideColorText}</p>` : ''}
-            ${typeColorText ? `<p>${typeColorText}</p>` : ''}
+            ${typeText ? `<p>${typeText}</p>` : ''}
             ${gripText ? `<p>${gripText}</p>` : ''}
             ${connectorText ? `<p>${connectorText}</p>` : ''}
             <p>Price: $${item.price}</p>
