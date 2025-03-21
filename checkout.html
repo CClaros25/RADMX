@@ -6,137 +6,145 @@
   <title>Checkout</title>
   <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: Jost, sans-serif;
-      background-color: #000;
-      color: #fff;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      background-color: #000;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
-    }
-    .logo img {
-      height: 40px;
-    }
-    nav a {
-      margin: 0 1rem;
-      color: #fff;
-      text-decoration: none;
-    }
-    .header-icons a {
-      margin-left: 1rem;
-    }
-    .header-icons img {
-      vertical-align: middle;
-      height: 22px;
-      width: 22px;
-    }
-    .checkout-container {
-      display: flex;
-      justify-content: space-between;
-      padding: 2rem 5rem;
-      gap: 3rem;
-    }
-    .checkout-form {
-      flex: 2;
-      background-color: #222;
-      padding: 2rem;
-      border-radius: 10px;
-    }
-    .checkout-form h1 {
-      margin-bottom: 1.5rem;
-      color: #6a00f4;
-    }
-    .checkout-form input, .checkout-form select, .checkout-form button {
-      width: 100%;
-      padding: 1rem;
-      margin: 0.5rem 0;
-      background-color: #333;
-      color: #fff;
-      border: 1px solid #444;
-      border-radius: 5px;
-      box-sizing: border-box;
-    }
-    .order-summary {
-      flex: 1;
-      background-color: #222;
-      padding: 2rem;
-      border-radius: 10px;
-    }
-    .order-summary h2 {
-      color: #6a00f4;
-    }
-    .order-summary p {
-      margin: 1rem 0;
-    }
-    .order-summary .total {
-      font-size: 1.5rem;
-      margin-top: 2rem;
-    }
-    .checkout-btn {
-      background-color: #6a00f4;
-      border: none;
-      padding: 1rem;
-      font-size: 1.2rem;
-      width: 100%;
-      cursor: pointer;
-      color: #fff;
-      border-radius: 5px;
-    }
-    .checkout-btn:hover {
-      background-color: #5c00e1;
-    }
-    footer {
-      background-color: #111;
-      padding: 2rem;
-      text-align: center;
-      font-size: 0.9rem;
-      color: #ccc;
-    }
-    .payment-method {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      max-width: 500px;
-      margin: 0 auto;
-      padding: 20px 0;
-    }
-    .payment-method img {
-      width: 40px;
-      height: auto;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-    .payment-method img:hover {
-      transform: scale(1.1);
-    }
-    .payment-details {
-      display: none;
-      background-color: #111;
-      padding: 1rem;
-      border-radius: 8px;
-      margin-top: 2rem;
-    }
-    .payment-details input {
-      width: 100%;
-      padding: 1rem;
-      margin: 1rem 0;
-      background-color: #333;
-      border: 1px solid #444;
-      border-radius: 5px;
-      color: #fff;
-      box-sizing: border-box;
-    }
-    .payment-details.active {
-      display: block;
-    }
-  </style>
+  body {
+    font-family: Jost, sans-serif;
+    background-color: #000;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+  }
+  .logo img {
+    height: 40px;
+  }
+  nav a {
+    margin: 0 1rem;
+    color: #fff;
+    text-decoration: none;
+  }
+  .header-icons a {
+    margin-left: 1rem;
+  }
+  .header-icons img {
+    vertical-align: middle;
+    height: 22px;
+    width: 22px;
+  }
+  .checkout-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 5rem;
+    gap: 3rem;
+  }
+  .checkout-form {
+    flex: 2;
+    background-color: #222;
+    padding: 2rem;
+    border-radius: 10px;
+  }
+  .checkout-form h1 {
+    margin-bottom: 1.5rem;
+    color: #6a00f4;
+  }
+  .checkout-form input, .checkout-form select, .checkout-form button {
+    width: 100%;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #444;
+    border-radius: 5px;
+    box-sizing: border-box; /* Ensures padding and border are included in the element's total width */
+  }
+  .order-summary {
+    flex: 1;
+    background-color: #222;
+    padding: 2rem;
+    border-radius: 10px;
+  }
+  .order-summary h2 {
+    color: #6a00f4;
+  }
+  .order-summary p {
+    margin: 1rem 0;
+  }
+  .order-summary .total {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+  }
+  .checkout-btn {
+    background-color: #6a00f4; /* Purple color as accent */
+    border: none;
+    padding: 1rem;
+    font-size: 1.2rem;
+    width: 100%;
+    cursor: pointer;
+    color: #fff;
+    border-radius: 5px;
+  }
+  .checkout-btn:hover {
+    background-color: #5c00e1; /* Slightly darker purple on hover */
+  }
+  footer {
+    background-color: #111;
+    padding: 2rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #ccc;
+  }
+  /* Image size adjustment */
+  .order-summary img {
+    width: 200px;
+    height: auto;
+    border-radius: 6px;
+    margin-right: 1rem;
+  }
+  .payment-method {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px 0;
+  }
+  .payment-method img {
+    width: 40px;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  .payment-method img:hover {
+    transform: scale(1.1);
+  }
+  .payment-details {
+    display: none;
+    background-color: #111;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+  }
+  .payment-details input {
+    width: 100%;
+    padding: 1rem;
+    margin: 1rem 0;
+    background-color: #333;
+    border: 1px solid #444;
+    border-radius: 5px;
+    color: #fff;
+    box-sizing: border-box;
+  }
+  .payment-details.active {
+    display: block;
+  }
+</style>
+
 </head>
 <body>
   <header>
@@ -160,22 +168,22 @@
       <form action="#" method="POST">
         <label for="fullName">Full Name</label>
         <input type="text" id="fullName" name="fullName" required />
-
+        
         <label for="email">Email Address</label>
         <input type="email" id="email" name="email" required />
-
+        
         <label for="address">Shipping Address</label>
         <input type="text" id="address" name="address" required />
-
+        
         <label for="city">City</label>
         <input type="text" id="city" name="city" required />
-
+        
         <label for="state">State</label>
         <input type="text" id="state" name="state" required />
-
+        
         <label for="zip">Zip Code</label>
         <input type="text" id="zip" name="zip" required />
-
+        
         <label for="paymentMethod">Payment Method</label>
         <div class="payment-method">
           <img src="https://img.icons8.com/color/48/000000/amex.png" alt="Amex" data-method="Amex">
@@ -255,44 +263,68 @@
   </footer>
 
   <script>
+    const cartItemsList = document.getElementById('cartItemsList');
+    const totalAmount = document.getElementById('totalAmount');
     const paymentMethodIcons = document.querySelectorAll('.payment-method img');
-    
-    paymentMethodIcons.forEach(icon => {
-      icon.addEventListener('click', function() {
-        const method = this.getAttribute('data-method');
-        const detailsDiv = document.getElementById(`${method}Details`);
+    const paymentDetails = document.querySelectorAll('.payment-details');
 
-        // Toggle visibility of the corresponding payment details
-        if (detailsDiv.classList.contains('active')) {
-          detailsDiv.classList.remove('active');
-        } else {
-          // Hide other payment details
-          document.querySelectorAll('.payment-details').forEach(detail => {
-            detail.classList.remove('active');
-          });
-          detailsDiv.classList.add('active');
+    function updateOrderSummary() {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cartItemsList.innerHTML = '';
+      
+      let total = 0;
+      cart.forEach(item => {
+        const itemDiv = document.createElement('div');
+        itemDiv.classList.add('cart-item');
+        
+        const imageSrc = `images/${item.productName.toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]/g, '')}.jpeg`;
+
+        let itemDetails = `
+          <img src="${imageSrc}" alt="${item.productName}" onerror="this.onerror=null;this.src='image.jpeg';">
+          <div class="cart-item-details">
+            <h3>${item.productName}</h3>
+            <p>Grip: ${item.grip || 'N/A'}</p>
+            <p>Connector: ${item.connector || 'N/A'}</p>
+            <p>Price: $${item.price}</p>
+        `;
+
+        // Check and display customization options
+        if (item.ribColor) {
+          itemDetails += `<p>Rib Color: ${item.ribColor}</p>`;
         }
+        if (item.sideColor) {
+          itemDetails += `<p>Side Color: ${item.sideColor}</p>`;
+        }
+        if (item.bodyColor) {
+          itemDetails += `<p>Body Color: ${item.bodyColor}</p>`;
+        }
+
+        itemDetails += `</div>`;
+
+        itemDiv.innerHTML = itemDetails;
+
+        cartItemsList.appendChild(itemDiv);
+        total += item.price * item.quantity;
+      });
+
+      totalAmount.innerText = `Total: $${total.toFixed(2)}`;
+    }
+
+    paymentMethodIcons.forEach(icon => {
+      icon.addEventListener('click', () => {
+        const method = icon.getAttribute('data-method');
+        
+        // Hide all payment details first
+        paymentDetails.forEach(detail => {
+          detail.classList.remove('active');
+        });
+
+        // Show the clicked payment method's details
+        document.getElementById(`${method}Details`).classList.add('active');
       });
     });
 
-    // Cart items & total amount code
-    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-    const cartItemsList = document.getElementById('cartItemsList');
-    const totalAmount = document.getElementById('totalAmount');
-    let total = 0;
-
-    if (cartItems.length > 0) {
-      cartItems.forEach(item => {
-        const listItem = document.createElement('p');
-        listItem.textContent = `${item.name} - $${item.price.toFixed(2)} x ${item.quantity}`;
-        cartItemsList.appendChild(listItem);
-        total += item.price * item.quantity;
-      });
-      totalAmount.textContent = `Total: $${total.toFixed(2)}`;
-    } else {
-      cartItemsList.innerHTML = '<p>Your cart is empty.</p>';
-      totalAmount.textContent = `Total: $0.00`;
-    }
+    updateOrderSummary();
   </script>
 </body>
 </html>
