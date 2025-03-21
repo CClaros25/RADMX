@@ -185,21 +185,27 @@
 
   <!-- Custom JS -->
   <script>
-    const addToCartBtn = document.getElementById('addToCartBtn');
-    const quantityInput = document.getElementById('quantityInput');
-    const priceDisplay = document.getElementById('priceDisplay');
-    const colorSelect = document.getElementById('colorSelect');
-    const productPrice = 3.99;
+  const addToCartBtn = document.getElementById('addToCartBtn');
+  const quantityInput = document.getElementById('quantityInput');
+  const priceDisplay = document.getElementById('priceDisplay');
+  const colorSelect = document.getElementById('colorSelect');
+  const productPrice = 3.99;
 
-    // Set initial price
-    priceDisplay.textContent = `$${productPrice.toFixed(2)} USD`;
+  // Set initial price
+  priceDisplay.textContent = `$${productPrice.toFixed(2)} USD`;
 
-    // Add to cart functionality
-    addToCartBtn.addEventListener('click', () => {
-      const quantity = parseInt(quantityInput.value);
-      const selectedColor = colorSelect.value;
-      const totalPrice = productPrice * quantity;
+  // Check if the "Add to Cart" button is working
+  addToCartBtn.addEventListener('click', () => {
+    // Ensure the quantity is a valid number
+    const quantity = parseInt(quantityInput.value);
+    const selectedColor = colorSelect.value;
+    const totalPrice = productPrice * quantity;
 
+    // Log values for debugging
+    console.log(`Adding to cart: ${quantity} ${selectedColor} at $${totalPrice.toFixed(2)}`);
+
+    // If quantity is valid, proceed with cart logic
+    if (quantity > 0) {
       const cartItem = {
         productName: 'Ebike Brake Lever Grip',
         quantity: quantity,
@@ -209,22 +215,34 @@
         image: document.getElementById('mainImage').src
       };
 
+      // Get existing cart items from localStorage, or initialize as empty array
       let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      
+      // Add the new cart item to the array
       cart.push(cartItem);
+
+      // Save updated cart to localStorage
       localStorage.setItem('cart', JSON.stringify(cart));
 
+      // Log the cart for debugging
+      console.log('Cart after adding item:', cart);
+
+      // Show confirmation alert
       alert(`${quantity} ${selectedColor} Brake Lever Grip(s) added to cart!`);
-    });
+    } else {
+      alert('Please select a valid quantity.');
+    }
+  });
 
-    // Thumbnail Switcher (without guessing color)
-    const thumbnails = document.querySelectorAll('.thumbnail');
-    const mainImage = document.getElementById('mainImage');
+  // Thumbnail Switcher
+  const thumbnails = document.querySelectorAll('.thumbnail');
+  const mainImage = document.getElementById('mainImage');
 
-    thumbnails.forEach(thumbnail => {
-      thumbnail.addEventListener('click', () => {
-        mainImage.src = thumbnail.src;
-      });
+  thumbnails.forEach(thumbnail => {
+    thumbnail.addEventListener('click', () => {
+      mainImage.src = thumbnail.src;
     });
-  </script>
+  });
+</script>
 </body>
 </html>
