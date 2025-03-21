@@ -132,8 +132,8 @@
     <div class="product-details">
       <h1>Guts Interactive Seatcover</h1>
 
-      label for="bodyColorSelect">Body Color</label>
-      <select id="bodyColorSelect">
+      <label for="typeColorSelect">Body Color</label>
+      <select id="typeColorSelect">
         <option value="Radrunner">Radrunner</option>
         <option value="Macfox">White</option>
         <option value="Ridstar">Red</option>
@@ -173,7 +173,7 @@
     </div>
 
     <div class="product-gallery">
-      <img id="mainImage" src="gutseat.jpeg" alt="Main Guts Image" />
+      <img id="mainImage" src="gutseat.jpeg" >
       <div class="thumbnail-row">
         <img src="gutsseat.jpeg" alt="Thumb 1" class="thumbnail"/>
         <img src="gutsseat2.jpeg" alt="Thumb 2" class="thumbnail"/>
@@ -210,19 +210,21 @@
 
     // Add to cart functionality
     addToCartBtn.addEventListener('click', () => {
+      const selectedTypeColor = document.getElementById('typeColorSelect').value;
       const selectedBodyColor = document.getElementById('bodyColorSelect').value;
       const selectedRibColor = document.getElementById('ribColorSelect').value;
       const selectedSideColor = document.getElementById('sideColorSelect').value;
-      const selectedTypeColor = document.getElementById('typeColorSelect').value;
+      
       const quantity = parseInt(quantityInput.value);
       const totalPrice = productPrice * quantity;
 
       const cartItem = {
         productName: 'Guts Interactive Seatcover',
+        typeColor: selectedTypeColor,
         bodyColor: selectedBodyColor,
         ribColor: selectedRibColor,
         sideColor: selectedSideColor,
-        typeColor: selectedTypeColor
+        
         quantity: quantity,
         price: productPrice,
         totalPrice: totalPrice,
