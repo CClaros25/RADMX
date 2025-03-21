@@ -134,6 +134,14 @@
       
       <label for="quantityInput">Quantity</label>
       <input type="number" id="quantityInput" min="1" value="1" />
+      <label for="colorSelect">Color</label>
+      <select id="colorSelect" class="dwn-menu">
+          <option value="White">White</option>
+          <option value="Red">Red</option>
+          <option value="Black">Black</option>
+          <option value="Blue">Blue</option>
+          <option value="Green">Green</option>
+      </select>
 
       <div class="price" id="priceDisplay">$3.99 USD</div>
       <button class="sold-out-btn" id="addToCartBtn">Add to Cart</button>
@@ -175,43 +183,48 @@
 
   <!-- Fixed Add to Cart Script -->
   <script>
-    const addToCartBtn = document.getElementById('addToCartBtn');
-    const quantityInput = document.getElementById('quantityInput');
-    const priceDisplay = document.getElementById('priceDisplay');
-    const productPrice = 3.99;
+    <script>
+  const addToCartBtn = document.getElementById('addToCartBtn');
+  const quantityInput = document.getElementById('quantityInput');
+  const priceDisplay = document.getElementById('priceDisplay');
+  const colorSelect = document.getElementById('colorSelect');
+  const productPrice = 3.99;
 
-    // Set initial price
-    priceDisplay.textContent = `$${productPrice.toFixed(2)} USD`;
+  // Set initial price
+  priceDisplay.textContent = `$${productPrice.toFixed(2)} USD`;
 
-    // Add to cart functionality
-    addToCartBtn.addEventListener('click', () => {
-      const quantity = parseInt(quantityInput.value);
-      const totalPrice = productPrice * quantity;
+  // Add to cart functionality
+  addToCartBtn.addEventListener('click', () => {
+    const quantity = parseInt(quantityInput.value);
+    const selectedColor = colorSelect.value;
+    const totalPrice = productPrice * quantity;
 
-      const cartItem = {
-        productName: 'Ebike Brake Lever Grip',
-        quantity: quantity,
-        price: productPrice,
-        totalPrice: totalPrice,
-        image: 'lever.jpeg'
-      };
+    const cartItem = {
+      productName: 'Ebike Brake Lever Grip',
+      quantity: quantity,
+      color: selectedColor,
+      price: productPrice,
+      totalPrice: totalPrice,
+      image: 'lever.jpeg'
+    };
 
-      let cart = JSON.parse(localStorage.getItem('cart')) || [];
-      cart.push(cartItem);
-      localStorage.setItem('cart', JSON.stringify(cart));
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.push(cartItem);
+    localStorage.setItem('cart', JSON.stringify(cart));
 
-      alert('Product added to cart!');
+    alert(`${quantity} ${selectedColor} Brake Lever Grip(s) added to cart!`);
+  });
+
+  // Thumbnail Switcher
+  const thumbnails = document.querySelectorAll('.thumbnail');
+  const mainImage = document.getElementById('mainImage');
+
+  thumbnails.forEach(thumbnail => {
+    thumbnail.addEventListener('click', () => {
+      mainImage.src = thumbnail.src;
     });
-
-    // Thumbnail Switcher
-    const thumbnails = document.querySelectorAll('.thumbnail');
-    const mainImage = document.getElementById('mainImage');
-
-    thumbnails.forEach(thumbnail => {
-      thumbnail.addEventListener('click', () => {
-        mainImage.src = thumbnail.src;
-      });
-    });
+  });
+</script>
   </script>
 </body>
 </html>
