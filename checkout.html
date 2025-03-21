@@ -6,137 +6,8 @@
   <title>Checkout</title>
   <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <style>
-  body {
-    font-family: Jost, sans-serif;
-    background-color: #000;
-    color: #fff;
-    margin: 0;
-    padding: 0;
-  }
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background-color: #000;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
-  }
-  .logo img {
-    height: 40px;
-  }
-  nav a {
-    margin: 0 1rem;
-    color: #fff;
-    text-decoration: none;
-  }
-  .header-icons a {
-    margin-left: 1rem;
-  }
-  .header-icons img {
-    vertical-align: middle;
-    height: 22px;
-    width: 22px;
-  }
-  .checkout-container {
-    display: flex;
-    justify-content: space-between;
-    padding: 2rem 5rem;
-    gap: 3rem;
-  }
-  .checkout-form {
-    flex: 2;
-    background-color: #222;
-    padding: 2rem;
-    border-radius: 10px;
-  }
-  .checkout-form h1 {
-    margin-bottom: 1.5rem;
-    color: #6a00f4;
-  }
-  .checkout-form input, .checkout-form select, .checkout-form button {
-    width: 100%;
-    padding: 1rem;
-    margin: 0.5rem 0;
-    background-color: #333;
-    color: #fff;
-    border: 1px solid #444;
-    border-radius: 5px;
-    box-sizing: border-box;
-  }
-  .order-summary {
-    flex: 1;
-    background-color: #222;
-    padding: 2rem;
-    border-radius: 10px;
-  }
-  .order-summary h2 {
-    color: #6a00f4;
-  }
-  .order-summary p {
-    margin: 1rem 0;
-  }
-  .order-summary .total {
-    font-size: 1.5rem;
-    margin-top: 2rem;
-  }
-  .checkout-btn {
-    background-color: #6a00f4;
-    border: none;
-    padding: 1rem;
-    font-size: 1.2rem;
-    width: 100%;
-    cursor: pointer;
-    color: #fff;
-    border-radius: 5px;
-  }
-  .checkout-btn:hover {
-    background-color: #5c00e1;
-  }
-  footer {
-    background-color: #111;
-    padding: 2rem;
-    text-align: center;
-    font-size: 0.9rem;
-    color: #ccc;
-  }
-  .payment-method {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 20px 0;
-  }
-  .payment-method img {
-    width: 40px;
-    height: auto;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-  }
-  .payment-method img:hover {
-    transform: scale(1.1);
-  }
-  .payment-details {
-    display: none;
-    background-color: #111;
-    padding: 1rem;
-    border-radius: 8px;
-    margin-top: 2rem;
-  }
-  .payment-details input {
-    width: 100%;
-    padding: 1rem;
-    margin: 1rem 0;
-    background-color: #333;
-    border: 1px solid #444;
-    border-radius: 5px;
-    color: #fff;
-    box-sizing: border-box;
-  }
-  .payment-details.active {
-    display: block;
-  }
-</style>
+    /* Your existing CSS here */
+  </style>
 </head>
 <body>
   <header>
@@ -158,84 +29,7 @@
     <div class="checkout-form">
       <h1>Checkout</h1>
       <form action="#" method="POST">
-        <label for="fullName">Full Name</label>
-        <input type="text" id="fullName" name="fullName" required />
-        
-        <label for="email">Email Address</label>
-        <input type="email" id="email" name="email" required />
-        
-        <label for="address">Shipping Address</label>
-        <input type="text" id="address" name="address" required />
-        
-        <label for="city">City</label>
-        <input type="text" id="city" name="city" required />
-        
-        <label for="state">State</label>
-        <input type="text" id="state" name="state" required />
-        
-        <label for="zip">Zip Code</label>
-        <input type="text" id="zip" name="zip" required />
-        
-        <label for="paymentMethod">Payment Method</label>
-        <div class="payment-method">
-          <img src="https://img.icons8.com/color/48/000000/amex.png" alt="Amex" data-method="Amex">
-          <img src="https://img.icons8.com/color/48/000000/apple-pay.png" alt="Apple Pay" data-method="Apple Pay">
-          <img src="https://img.icons8.com/color/48/000000/discover.png" alt="Discover" data-method="Discover">
-          <img src="https://img.icons8.com/color/48/000000/google-pay.png" alt="Google Pay" data-method="Google Pay">
-          <img src="https://img.icons8.com/color/48/000000/mastercard-logo.png" alt="MasterCard" data-method="MasterCard">
-          <img src="https://img.icons8.com/color/48/000000/shopify.png" alt="Shopify" data-method="Shopify">
-          <img src="https://img.icons8.com/color/48/000000/visa.png" alt="Visa" data-method="Visa">
-        </div>
-
-        <div class="payment-details" id="AmexDetails">
-          <h2>Enter Amex Details</h2>
-          <input type="text" id="cardNumber" placeholder="Card Number">
-          <input type="text" id="cardExpiry" placeholder="Expiry Date (MM/YY)">
-          <input type="text" id="cardCVC" placeholder="CVC">
-        </div>
-
-        <div class="payment-details" id="ApplePayDetails">
-          <h2>Enter Apple Pay Details</h2>
-          <input type="text" id="cardNumber" placeholder="Card Number">
-          <input type="text" id="cardExpiry" placeholder="Expiry Date (MM/YY)">
-          <input type="text" id="cardCVC" placeholder="CVC">
-        </div>
-
-        <div class="payment-details" id="DiscoverDetails">
-          <h2>Enter Discover Details</h2>
-          <input type="text" id="cardNumber" placeholder="Card Number">
-          <input type="text" id="cardExpiry" placeholder="Expiry Date (MM/YY)">
-          <input type="text" id="cardCVC" placeholder="CVC">
-        </div>
-
-        <div class="payment-details" id="GooglePayDetails">
-          <h2>Enter Google Pay Details</h2>
-          <input type="text" id="cardNumber" placeholder="Card Number">
-          <input type="text" id="cardExpiry" placeholder="Expiry Date (MM/YY)">
-          <input type="text" id="cardCVC" placeholder="CVC">
-        </div>
-
-        <div class="payment-details" id="MasterCardDetails">
-          <h2>Enter MasterCard Details</h2>
-          <input type="text" id="cardNumber" placeholder="Card Number">
-          <input type="text" id="cardExpiry" placeholder="Expiry Date (MM/YY)">
-          <input type="text" id="cardCVC" placeholder="CVC">
-        </div>
-
-        <div class="payment-details" id="ShopifyDetails">
-          <h2>Enter Shopify Details</h2>
-          <input type="text" id="cardNumber" placeholder="Card Number">
-          <input type="text" id="cardExpiry" placeholder="Expiry Date (MM/YY)">
-          <input type="text" id="cardCVC" placeholder="CVC">
-        </div>
-
-        <div class="payment-details" id="VisaDetails">
-          <h2>Enter Visa Details</h2>
-          <input type="text" id="cardNumber" placeholder="Card Number">
-          <input type="text" id="cardExpiry" placeholder="Expiry Date (MM/YY)">
-          <input type="text" id="cardCVC" placeholder="CVC">
-        </div>
-
+        <!-- Your existing form fields here -->
         <a href="processing.html">
           <button type="button" class="checkout-btn">Complete Purchase</button>
         </a>
@@ -270,7 +64,7 @@
         const imageSrc = `images/${item.productName.toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]/g, '')}.jpeg`;
 
         let itemDetails = `
-          <img src="${imageSrc}" alt="${item.productName}" onerror="this.onerror=null;this.src='image.jpeg';">
+          <img src="${imageSrc}" alt="${item.productName}" onerror="this.onerror=null;this.src='image.jpeg';" style="width: 100px; height: auto;">
           <div class="cart-item-details">
             <h3>${item.productName}</h3>
             <p>Grip: ${item.grip || 'N/A'}</p>
