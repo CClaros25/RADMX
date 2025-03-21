@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Guts Interactive Seatcover</title>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: Jost, sans-serif;
+      background-color: #000;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #000;
+    }
+    .logo img {
+      height: 40px;
+    }
+    nav a {
+      margin: 0 1rem;
+      color: #fff;
+      text-decoration: none;
+    }
+    .header-icons a {
+      margin-left: 1rem;
+    }
+    .header-icons img {
+      vertical-align: middle;
+      height: 22px;
+      width: 22px;
+    }
+    .product-container {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 2rem;
+      gap: 2rem;
+    }
+    .product-details {
+      flex: 1;
+      min-width: 300px;
+    }
+    .product-details h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    select, button, input[type="number"] {
+      width: 100%;
+      padding: 0.8rem;
+      margin: 0.5rem 0;
+      background-color: #111;
+      color: #fff;
+      border: 1px solid #444;
+      border-radius: 5px;
+    }
+    .price {
+      font-size: 1.2rem;
+      margin: 1rem 0;
+    }
+    .sold-out-btn, .shop-pay-btn {
+      background-color: #333;
+      border: none;
+      margin-top: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .sold-out-btn:hover {
+      background-color: #555;
+    }
+    .shop-pay-btn:hover {
+      background-color: #8c00f4;
+    }
+    .shop-pay-btn {
+      background-color: #6a00f4;
+    }
+    .description {
+      margin-top: 2rem;
+    }
+    .product-gallery {
+      flex: 1;
+      min-width: 300px;
+    }
+    .product-gallery img {
+      width: 80%;
+      border-radius: 10px;
+    }
+    .thumbnail-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 1rem;
+    }
+    .thumbnail-row img {
+      width: 80px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    footer {
+      background-color: #000;
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+    .payment-icons img {
+      height: 45px;
+      margin: 0 5px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="toplogo.png" alt="Logo" />
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="storepage.html">All Products</a>
+      <a href="support.html">Support</a>
+    </nav>
+    <div class="header-icons">
+      <a href="signup.html"><img src="account.png"/></a>
+      <a href="cart.html"><img src="cart.png"/></a>
+    </div>
+  </header>
+
+  <main class="product-container">
+    <div class="product-details">
+      <h1>ODI Plate</h1>
+      
+      <label for="quantityInput">Quantity</label>
+      <input type="number" id="quantityInput" min="1" value="1" />
+
+      <div class="price" id="priceDisplay">$29.99 USD</div>
+      <div id="installmentText">Pay in 4 interest-free installments of $20.00 with <b>Shop Pay</b></div>
+      <button class="sold-out-btn" id="addToCartBtn">Add to Cart</button>
+      <div class="description">
+        <p>Super Bright plug & play LED Rocklight Kit for Ebikes</p>
+        <p>Comes with 12v Converter to power light safely</p>
+      </div>
+    </div>
+
+    <div class="product-gallery">
+      <img id="mainImage" src="odiplate.jpeg" >
+      <div class="thumbnail-row">
+        <img src="odiplate.jpeg" alt="Thumb 1" class="thumbnail"/>
+        <img src="odiplate2.jpeg" alt="Thumb 2" class="thumbnail"/>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025, RADMX Racing Powered by Shopify</p>
+    <a href="#">Privacy policy</a> | <a href="#">Refund policy</a>
+    <div class="payment-icons">
+      <img src="https://img.icons8.com/color/48/000000/amex.png"/> 
+      <img src="https://img.icons8.com/color/48/000000/apple-pay.png"/>
+      <img src="https://img.icons8.com/color/48/000000/discover.png"/>
+      <img src="https://img.icons8.com/color/48/000000/google-pay.png"/>
+      <img src="https://img.icons8.com/color/48/000000/mastercard-logo.png"/>
+      <img src="https://img.icons8.com/color/48/000000/shopify.png"/>
+      <img src="https://img.icons8.com/color/48/000000/visa.png"/>
+    </div>
+  </footer>
+
+  <!-- Elfsight AI Chatbot -->
+  <script src="https://static.elfsight.com/platform/platform.js" async></script>
+  <div class="elfsight-app-7c94cc5c-9114-4dd8-bb1f-0e68caabc0e3" data-elfsight-app-lazy></div>
+
+  <script>
+    const addToCartBtn = document.getElementById('addToCartBtn');
+    const quantityInput = document.getElementById('quantityInput');
+    const priceDisplay = document.getElementById('priceDisplay');
+    const productPrice = 29.99;
+
+    // Set initial price
+    priceDisplay.textContent = `$${productPrice.toFixed(2)} USD`;
+
+    // Add to cart functionality
+    addToCartBtn.addEventListener('click', () => {
+      const selectedType = document.getElementById('typeColorSelect').value;  // Corrected id here
+      const selectedBodyColor = document.getElementById('bodyColorSelect').value;
+      const selectedRibColor = document.getElementById('ribColorSelect').value;
+      const selectedSideColor = document.getElementById('sideColorSelect').value;
+      
+      const quantity = parseInt(quantityInput.value);
+      const totalPrice = productPrice * quantity;
+
+      const cartItem = {
+        productName: 'ODI Plate',
+        type: selectedType,
+        bodyColor: selectedBodyColor,
+        ribColor: selectedRibColor,
+        sideColor: selectedSideColor,
+        quantity: quantity,
+        price: productPrice,
+        totalPrice: totalPrice,
+        image: 'odiplate.jpeg'
+      };
+
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.push(cartItem);
+      localStorage.setItem('cart', JSON.stringify(cart));
+
+      alert('Product added to cart!');
+    });
+
+    // Thumbnail Switcher
+    const thumbnails = document.querySelectorAll('.thumbnail');
+    const mainImage = document.getElementById('mainImage');
+
+    thumbnails.forEach(thumbnail => {
+      thumbnail.addEventListener('click', () => {
+        mainImage.src = thumbnail.src;
+      });
+    });
+  </script>
+</body>
+</html>
