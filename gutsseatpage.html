@@ -210,7 +210,7 @@
 
     // Add to cart functionality
     addToCartBtn.addEventListener('click', () => {
-      const selectedTypeColor = document.getElementById('typeColorSelect').value;
+      const selectedType = document.getElementById('typeSelect').value;
       const selectedBodyColor = document.getElementById('bodyColorSelect').value;
       const selectedRibColor = document.getElementById('ribColorSelect').value;
       const selectedSideColor = document.getElementById('sideColorSelect').value;
@@ -220,7 +220,7 @@
 
       const cartItem = {
         productName: 'Guts Interactive Seatcover',
-        typeColor: selectedTypeColor,
+        type: selectedType,
         bodyColor: selectedBodyColor,
         ribColor: selectedRibColor,
         sideColor: selectedSideColor,
