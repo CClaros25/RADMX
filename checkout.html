@@ -235,7 +235,7 @@
           <input type="text" id="cardExpiry" placeholder="Expiry Date (MM/YY)">
           <input type="text" id="cardCVC" placeholder="CVC">
         </div>
-        
+
         <a href="processing.html">
           <button type="button" class="checkout-btn">Complete Purchase</button>
         </a>
@@ -255,53 +255,40 @@
   </footer>
 
   <script>
+    const paymentMethodIcons = document.querySelectorAll('.payment-method img');
+    
+    paymentMethodIcons.forEach(icon => {
+      icon.addEventListener('click', function() {
+        const method = this.getAttribute('data-method');
+        const detailsDiv = document.getElementById(`${method}Details`);
+
+        // Toggle visibility of the corresponding payment details
+        if (detailsDiv.classList.contains('active')) {
+          detailsDiv.classList.remove('active');
+        } else {
+          // Hide other payment details
+          document.querySelectorAll('.payment-details').forEach(detail => {
+            detail.classList.remove('active');
+          });
+          detailsDiv.classList.add('active');
+        }
+      });
+    });
+
+    // Cart items & total amount code
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
     const cartItemsList = document.getElementById('cartItemsList');
     const totalAmount = document.getElementById('totalAmount');
+    let total = 0;
 
-    function updateOrderSummary() {
-      let cart = JSON.parse(localStorage.getItem('cart')) || [];
-      cartItemsList.innerHTML = '';
+    cartItems.forEach(item => {
+      const listItem = document.createElement('p');
+      listItem.textContent = `${item.name} - $${item.price.toFixed(2)} x ${item.quantity}`;
+      cartItemsList.appendChild(listItem);
+      total += item.price * item.quantity;
+    });
 
-      let total = 0;
-      cart.forEach(item => {
-        const itemDiv = document.createElement('div');
-        itemDiv.classList.add('cart-item');
-        
-        const imageSrc = `images/${item.productName.toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]/g, '')}.jpeg`;
-
-        let itemDetails = `
-          <img src="${imageSrc}" alt="${item.productName}" onerror="this.onerror=null;this.src='image.jpeg';" style="width: 100px; height: auto;">
-          <div class="cart-item-details">
-            <h3>${item.productName}</h3>
-            <p>Grip: ${item.grip || 'N/A'}</p>
-            <p>Connector: ${item.connector || 'N/A'}</p>
-            <p>Price: $${item.price}</p>
-        `;
-
-        // Display selected seat cover type and customization options
-        if (item.seatCoverType) {
-          itemDetails += `<p>Seat Cover Type: ${item.seatCoverType}</p>`;
-        }
-        if (item.ribColor) {
-          itemDetails += `<p>Rib Color: ${item.ribColor}</p>`;
-        }
-        if (item.sideColor) {
-          itemDetails += `<p>Side Color: ${item.sideColor}</p>`;
-        }
-        if (item.bodyColor) {
-          itemDetails += `<p>Body Color: ${item.bodyColor}</p>`;
-        }
-
-        itemDetails += `</div>`;
-        itemDiv.innerHTML = itemDetails;
-        cartItemsList.appendChild(itemDiv);
-        total += item.price * item.quantity;
-      });
-
-      totalAmount.innerText = `Total: $${total.toFixed(2)}`;
-    }
-
-    updateOrderSummary();
+    totalAmount.textContent = `Total: $${total.toFixed(2)}`;
   </script>
 </body>
 </html>
