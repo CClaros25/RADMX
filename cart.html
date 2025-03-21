@@ -120,6 +120,13 @@
       display: block;
       text-align: center;
     }
+    /* Center the 'Your cart is empty' message */
+    .cart-empty-message {
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
+      margin-top: 3rem;
+    }
   </style>
 </head>
 <body>
@@ -168,7 +175,7 @@
       cartItemsList.innerHTML = '';
 
       if (cart.length === 0) {
-        cartItemsList.innerHTML = '<p>Your cart is empty</p>';
+        cartItemsList.innerHTML = '<p class="cart-empty-message">Your cart is empty</p>';
         checkoutBtn.classList.add('disabled');
         checkoutBtn.disabled = true;
         return;
