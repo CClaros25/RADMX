@@ -171,6 +171,7 @@
   <script src="https://static.elfsight.com/platform/platform.js" async></script>
   <div class="elfsight-app-7c94cc5c-9114-4dd8-bb1f-0e68caabc0e3" data-elfsight-app-lazy></div>
 
+  <!-- Fixed Add to Cart Script -->
   <script>
     const addToCartBtn = document.getElementById('addToCartBtn');
     const quantityInput = document.getElementById('quantityInput');
@@ -182,20 +183,11 @@
 
     // Add to cart functionality
     addToCartBtn.addEventListener('click', () => {
-      const selectedType = document.getElementById('typeColorSelect').value;  // Corrected id here
-      const selectedBodyColor = document.getElementById('bodyColorSelect').value;
-      const selectedRibColor = document.getElementById('ribColorSelect').value;
-      const selectedSideColor = document.getElementById('sideColorSelect').value;
-      
       const quantity = parseInt(quantityInput.value);
       const totalPrice = productPrice * quantity;
 
       const cartItem = {
         productName: 'ODI Plate',
-        type: selectedType,
-        bodyColor: selectedBodyColor,
-        ribColor: selectedRibColor,
-        sideColor: selectedSideColor,
         quantity: quantity,
         price: productPrice,
         totalPrice: totalPrice,
