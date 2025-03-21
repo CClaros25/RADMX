@@ -2,89 +2,149 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Checkout</title>
   <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <style>
-    body {
-      font-family: Jost, sans-serif;
-      background-color: #000;
-      color: #fff;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      background-color: #000;
-    }
-    .logo img {
-      height: 40px;
-    }
-    nav a {
-      margin: 0 1rem;
-      color: #fff;
-      text-decoration: none;
-    }
-    .header-icons a {
-      margin-left: 1rem;
-    }
-    .header-icons img {
-      vertical-align: middle;
-      height: 22px;
-      width: 22px;
-    }
-    .checkout-container {
-      padding: 2rem;
-    }
-    .checkout-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 2rem;
-      border-bottom: 1px solid #444;
-      padding-bottom: 1rem;
-    }
-    .checkout-item img {
-      width: 90px;
-      height: auto;
-      border-radius: 6px;
-    }
-    .checkout-item-details {
-      flex: 1;
-      padding-left: 1rem;
-    }
-    .checkout-item-details h3 {
-      margin: 0;
-      font-size: 1.2rem;
-    }
-    .checkout-item-details p {
-      margin: 0.3rem 0;
-    }
-    .total {
-      font-size: 1.5rem;
-      margin-top: 2rem;
-    }
-    .place-order-btn {
-      background-color: #6a00f4;
-      border: none;
-      padding: 1rem;
-      font-size: 1.2rem;
-      width: 100%;
-      cursor: pointer;
-      color: #fff;
-      margin-top: 1.5rem;
-    }
-    footer {
-      background-color: #000;
-      padding: 2rem;
-      text-align: center;
-      font-size: 0.9rem;
-    }
-  </style>
+  body {
+    font-family: Jost, sans-serif;
+    background-color: #000;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+  }
+  .logo img {
+    height: 40px;
+  }
+  nav a {
+    margin: 0 1rem;
+    color: #fff;
+    text-decoration: none;
+  }
+  .header-icons a {
+    margin-left: 1rem;
+  }
+  .header-icons img {
+    vertical-align: middle;
+    height: 22px;
+    width: 22px;
+  }
+  .checkout-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 5rem;
+    gap: 3rem;
+  }
+  .checkout-form {
+    flex: 2;
+    background-color: #222;
+    padding: 2rem;
+    border-radius: 10px;
+  }
+  .checkout-form h1 {
+    margin-bottom: 1.5rem;
+    color: #6a00f4;
+  }
+  .checkout-form input, .checkout-form select, .checkout-form button {
+    width: 100%;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #444;
+    border-radius: 5px;
+    box-sizing: border-box; /* Ensures padding and border are included in the element's total width */
+  }
+  .order-summary {
+    flex: 1;
+    background-color: #222;
+    padding: 2rem;
+    border-radius: 10px;
+  }
+  .order-summary h2 {
+    color: #6a00f4;
+  }
+  .order-summary p {
+    margin: 1rem 0;
+  }
+  .order-summary .total {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+  }
+  .checkout-btn {
+    background-color: #6a00f4; /* Purple color as accent */
+    border: none;
+    padding: 1rem;
+    font-size: 1.2rem;
+    width: 100%;
+    cursor: pointer;
+    color: #fff;
+    border-radius: 5px;
+  }
+  .checkout-btn:hover {
+    background-color: #5c00e1; /* Slightly darker purple on hover */
+  }
+  footer {
+    background-color: #111;
+    padding: 2rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #ccc;
+  }
+  /* Image size adjustment */
+  .order-summary img {
+    width: 200px;
+    height: auto;
+    border-radius: 6px;
+    margin-right: 1rem;
+  }
+  .payment-method {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px 0;
+  }
+  .payment-method img {
+    width: 40px;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  .payment-method img:hover {
+    transform: scale(1.1);
+  }
+  .payment-details {
+    display: none;
+    background-color: #111;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+  }
+  .payment-details input {
+    width: 100%;
+    padding: 1rem;
+    margin: 1rem 0;
+    background-color: #333;
+    border: 1px solid #444;
+    border-radius: 5px;
+    color: #fff;
+    box-sizing: border-box;
+  }
+  .payment-details.active {
+    display: block;
+  }
+</style>
+
 </head>
 <body>
   <header>
@@ -93,7 +153,7 @@
     </div>
     <nav>
       <a href="index.html">Home</a>
-      <a href="storepage.html">All Products</a>
+      <a href="storepage.html">Store</a>
       <a href="support.html">Support</a>
     </nav>
     <div class="header-icons">
@@ -103,10 +163,98 @@
   </header>
 
   <div class="checkout-container">
-    <h1>Checkout</h1>
-    <div id="checkoutItemsList"></div>
-    <div class="total" id="checkoutTotalAmount">Total: $0.00</div>
-    <button class="place-order-btn">Place Order</button>
+    <div class="checkout-form">
+      <h1>Checkout</h1>
+      <form action="#" method="POST">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" name="fullName" required />
+        
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required />
+        
+        <label for="address">Shipping Address</label>
+        <input type="text" id="address" name="address" required />
+        
+        <label for="city">City</label>
+        <input type="text" id="city" name="city" required />
+        
+        <label for="state">State</label>
+        <input type="text" id="state" name="state" required />
+        
+        <label for="zip">Zip Code</label>
+        <input type="text" id="zip" name="zip" required />
+        
+        <label for="paymentMethod">Payment Method</label>
+        <div class="payment-method">
+          <img src="https://img.icons8.com/color/48/000000/amex.png" alt="Amex" data-method="Amex">
+          <img src="https://img.icons8.com/color/48/000000/apple-pay.png" alt="Apple Pay" data-method="Apple Pay">
+          <img src="https://img.icons8.com/color/48/000000/discover.png" alt="Discover" data-method="Discover">
+          <img src="https://img.icons8.com/color/48/000000/google-pay.png" alt="Google Pay" data-method="Google Pay">
+          <img src="https://img.icons8.com/color/48/000000/mastercard-logo.png" alt="MasterCard" data-method="MasterCard">
+          <img src="https://img.icons8.com/color/48/000000/shopify.png" alt="Shopify" data-method="Shopify">
+          <img src="https://img.icons8.com/color/48/000000/visa.png" alt="Visa" data-method="Visa">
+        </div>
+
+        <div class="payment-details" id="AmexDetails">
+          <h2>Enter Amex Details</h2>
+          <input type="text" id="cardNumber" placeholder="Card Number">
+          <input type="text" id="cardExpiry" placeholder="Expiry Date (MM/YY)">
+          <input type="text" id="cardCVC" placeholder="CVC">
+        </div>
+
+        <div class="payment-details" id="ApplePayDetails">
+          <h2>Enter Apple Pay Details</h2>
+          <input type="text" id="cardNumber" placeholder="Card Number">
+          <input type="text" id="cardExpiry" placeholder="Expiry Date (MM/YY)">
+          <input type="text" id="cardCVC" placeholder="CVC">
+        </div>
+
+        <div class="payment-details" id="DiscoverDetails">
+          <h2>Enter Discover Details</h2>
+          <input type="text" id="cardNumber" placeholder="Card Number">
+          <input type="text" id="cardExpiry" placeholder="Expiry Date (MM/YY)">
+          <input type="text" id="cardCVC" placeholder="CVC">
+        </div>
+
+        <div class="payment-details" id="GooglePayDetails">
+          <h2>Enter Google Pay Details</h2>
+          <input type="text" id="cardNumber" placeholder="Card Number">
+          <input type="text" id="cardExpiry" placeholder="Expiry Date (MM/YY)">
+          <input type="text" id="cardCVC" placeholder="CVC">
+        </div>
+
+        <div class="payment-details" id="MasterCardDetails">
+          <h2>Enter MasterCard Details</h2>
+          <input type="text" id="cardNumber" placeholder="Card Number">
+          <input type="text" id="cardExpiry" placeholder="Expiry Date (MM/YY)">
+          <input type="text" id="cardCVC" placeholder="CVC">
+        </div>
+
+        <div class="payment-details" id="ShopifyDetails">
+          <h2>Enter Shopify Details</h2>
+          <input type="text" id="cardNumber" placeholder="Card Number">
+          <input type="text" id="cardExpiry" placeholder="Expiry Date (MM/YY)">
+          <input type="text" id="cardCVC" placeholder="CVC">
+        </div>
+
+        <div class="payment-details" id="VisaDetails">
+          <h2>Enter Visa Details</h2>
+          <input type="text" id="cardNumber" placeholder="Card Number">
+          <input type="text" id="cardExpiry" placeholder="Expiry Date (MM/YY)">
+          <input type="text" id="cardCVC" placeholder="CVC">
+        </div>
+
+        <a href="processing.html">
+          <button type="button" class="checkout-btn">Complete Purchase</button>
+        </a>
+      </form>
+    </div>
+
+    <div class="order-summary">
+      <h2>Order Summary</h2>
+      <div id="cartItemsList"></div>
+      <p class="total" id="totalAmount">Total: $0.00</p>
+    </div>
   </div>
 
   <footer>
@@ -115,57 +263,78 @@
   </footer>
 
   <script>
-    const checkoutItemsList = document.getElementById('checkoutItemsList');
-    const checkoutTotalAmount = document.getElementById('checkoutTotalAmount');
+    const cartItemsList = document.getElementById('cartItemsList');
+    const totalAmount = document.getElementById('totalAmount');
+    const paymentMethodIcons = document.querySelectorAll('.payment-method img');
+    const paymentDetails = document.querySelectorAll('.payment-details');
 
-    function getImageSrc(productName) {
-      if (!productName) return 'image.jpeg';
-      const formattedName = productName.toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]/g, '');
-      return `images/${formattedName}.jpeg`;
-    }
-
-    function loadCheckoutItems() {
+    function updateOrderSummary() {
       let cart = JSON.parse(localStorage.getItem('cart')) || [];
-      checkoutItemsList.innerHTML = '';
-
+      cartItemsList.innerHTML = '';
+      
       let total = 0;
       cart.forEach(item => {
         const itemDiv = document.createElement('div');
-        itemDiv.classList.add('checkout-item');
+        itemDiv.classList.add('cart-item');
+        
+        const imageSrc = `images/${item.productName.toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]/g, '')}.jpeg`;
 
-        const imageSrc = getImageSrc(item.productName);
-
-        const gripText = item.grip ? `Grip: ${item.grip}` : '';
-        const connectorText = item.connector ? `Connector: ${item.connector}` : '';
-        const bodyColorText = item.bodyColor ? `Body Color: ${item.bodyColor}` : '';
-        const ribColorText = item.ribColor ? `Rib Color: ${item.ribColor}` : '';
-        const sideColorText = item.sideColor ? `Side Color: ${item.sideColor}` : '';
-        const typeText = item.type ? `Type: ${item.type}` : '';
-        const colorText = item.color ? `Color: ${item.color}` : '';
-
-        itemDiv.innerHTML = `
+        let itemDetails = `
           <img src="${imageSrc}" alt="${item.productName}" onerror="this.onerror=null;this.src='image.jpeg';">
-          <div class="checkout-item-details">
+          <div class="cart-item-details">
             <h3>${item.productName}</h3>
-            ${bodyColorText ? `<p>${bodyColorText}</p>` : ''}
-            ${ribColorText ? `<p>${ribColorText}</p>` : ''}
-            ${sideColorText ? `<p>${sideColorText}</p>` : ''}
-            ${typeText ? `<p>${typeText}</p>` : ''}
-            ${colorText ? `<p>${colorText}</p>` : ''}
-            ${gripText ? `<p>${gripText}</p>` : ''}
-            ${connectorText ? `<p>${connectorText}</p>` : ''}
-            <p>Quantity: ${item.quantity}</p>
             <p>Price: $${item.price}</p>
-          </div>
         `;
-        checkoutItemsList.appendChild(itemDiv);
+
+        // Only add details if they exist
+        if (item.type) {
+          itemDetails += `<p>Type: ${item.type}</p>`;
+        }
+        if (item.color) {
+          itemDetails += `<p>Color: ${item.color}</p>`;
+        }
+        if (item.ribColor) {
+          itemDetails += `<p>Rib Color: ${item.ribColor}</p>`;
+        }
+        if (item.sideColor) {
+          itemDetails += `<p>Side Color: ${item.sideColor}</p>`;
+        }
+        if (item.bodyColor) {
+          itemDetails += `<p>Body Color: ${item.bodyColor}</p>`;
+        }
+        if (item.grip) {
+          itemDetails += `<p>Grip: ${item.grip}</p>`;
+        }
+        if (item.connector) {
+          itemDetails += `<p>Connector: ${item.connector}</p>`;
+        }
+
+        itemDetails += `</div>`;
+
+        itemDiv.innerHTML = itemDetails;
+
+        cartItemsList.appendChild(itemDiv);
         total += item.price * item.quantity;
       });
 
-      checkoutTotalAmount.innerText = `Total: $${total.toFixed(2)}`;
+      totalAmount.innerText = `Total: $${total.toFixed(2)}`;
     }
 
-    loadCheckoutItems();
+    paymentMethodIcons.forEach(icon => {
+      icon.addEventListener('click', () => {
+        const method = icon.getAttribute('data-method');
+        
+        // Hide all payment details first
+        paymentDetails.forEach(detail => {
+          detail.classList.remove('active');
+        });
+
+        // Show the clicked payment method's details
+        document.getElementById(`${method}Details`).classList.add('active');
+      });
+    });
+
+    updateOrderSummary();
   </script>
 </body>
 </html>
