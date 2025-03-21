@@ -97,6 +97,10 @@
       cursor: pointer;
       color: #fff;
     }
+    .checkout-btn.disabled {
+      background-color: #444;
+      cursor: not-allowed;
+    }
     footer {
       background-color: #000;
       padding: 2rem;
@@ -138,7 +142,7 @@
     <h1>Your Cart</h1>
     <div id="cartItemsList"></div>
     <div class="total" id="totalAmount">Total: $0.00</div>
-    <a href="checkout.html"><button class="checkout-btn">Checkout</button></a>
+    <button class="checkout-btn disabled" id="checkoutBtn" disabled>Checkout</button>
     <a href="order-summary.html"><button class="summary-btn">Summary</button></a>
   </div>
 
@@ -150,6 +154,7 @@
   <script>
     const cartItemsList = document.getElementById('cartItemsList');
     const totalAmount = document.getElementById('totalAmount');
+    const checkoutBtn = document.getElementById('checkoutBtn');
 
     // Create image path based on product name
     function getImageSrc(productName) {
@@ -161,7 +166,14 @@
     function updateCart() {
       let cart = JSON.parse(localStorage.getItem('cart')) || [];
       cartItemsList.innerHTML = '';
-      
+
+      if (cart.length === 0) {
+        cartItemsList.innerHTML = '<p>Your cart is empty</p>';
+        checkoutBtn.classList.add('disabled');
+        checkoutBtn.disabled = true;
+        return;
+      }
+
       let total = 0;
       cart.forEach(item => {
         const itemDiv = document.createElement('div');
@@ -202,6 +214,8 @@
       });
 
       totalAmount.innerText = `Total: $${total.toFixed(2)}`;
+      checkoutBtn.classList.remove('disabled');
+      checkoutBtn.disabled = false;
     }
 
     cartItemsList.addEventListener('click', e => {
