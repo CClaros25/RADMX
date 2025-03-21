@@ -169,13 +169,14 @@
         
         const imageSrc = getImageSrc(item.productName);
 
-        // Conditional rendering of product options (grip, connector, body color, etc.)
+        // Conditional rendering of product options
         const gripText = item.grip ? `Grip: ${item.grip}` : '';
         const connectorText = item.connector ? `Connector: ${item.connector}` : '';
         const bodyColorText = item.bodyColor ? `Body Color: ${item.bodyColor}` : '';
         const ribColorText = item.ribColor ? `Rib Color: ${item.ribColor}` : '';
         const sideColorText = item.sideColor ? `Side Color: ${item.sideColor}` : '';
-        const typeText = item.type ? `${item.type}` : ''; // Now this will just display the type value, no "Type:"
+        const typeText = item.type ? `Type: ${item.type}` : '';
+        const colorText = item.color ? `Color: ${item.color}` : '';
 
         itemDiv.innerHTML = `
           <img src="${imageSrc}" alt="${item.productName}" onerror="this.onerror=null;this.src='image.jpeg';">
@@ -184,7 +185,8 @@
             ${bodyColorText ? `<p>${bodyColorText}</p>` : ''}
             ${ribColorText ? `<p>${ribColorText}</p>` : ''}
             ${sideColorText ? `<p>${sideColorText}</p>` : ''}
-            ${typeText ? `<p>${typeText}</p>` : ''} <!-- Now just the type value -->
+            ${typeText ? `<p>${typeText}</p>` : ''}
+            ${colorText ? `<p>${colorText}</p>` : ''}
             ${gripText ? `<p>${gripText}</p>` : ''}
             ${connectorText ? `<p>${connectorText}</p>` : ''}
             <p>Price: $${item.price}</p>
