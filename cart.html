@@ -104,18 +104,18 @@
       font-size: 0.9rem;
     }
     .summary-btn {
-  background-color: #6a00f4;
-  border: none;
-  padding: 1rem;
-  font-size: 1.2rem;
-  width: 30%; /* Adjust to your desired width */
-  cursor: pointer;
-  color: #fff;
-  margin: 1rem auto; /* Center the button horizontally and add margin on top and bottom */
-  border-radius: 5px;
-  display: block; /* Ensures the button is treated as a block element */
-  text-align: center;
-}
+      background-color: #6a00f4;
+      border: none;
+      padding: 1rem;
+      font-size: 1.2rem;
+      width: 30%;
+      cursor: pointer;
+      color: #fff;
+      margin: 1rem auto;
+      border-radius: 5px;
+      display: block;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -139,9 +139,7 @@
     <div id="cartItemsList"></div>
     <div class="total" id="totalAmount">Total: $0.00</div>
     <a href="checkout.html"><button class="checkout-btn">Checkout</button></a>
-    <a href="order-summary.html">
-  <button class="summary-btn">Summary</button>
-</a>
+    <a href="order-summary.html"><button class="summary-btn">Summary</button></a>
   </div>
 
   <footer>
@@ -171,16 +169,24 @@
         
         const imageSrc = getImageSrc(item.productName);
 
-        // Conditional rendering of grip and connector
+        // Conditional rendering of product options (grip, connector, body color, etc.)
         const gripText = item.grip ? `Grip: ${item.grip}` : '';
         const connectorText = item.connector ? `Connector: ${item.connector}` : '';
+        const bodyColorText = item.bodyColor ? `Body Color: ${item.bodyColor}` : '';
+        const ribColorText = item.ribColor ? `Rib Color: ${item.ribColor}` : '';
+        const sideColorText = item.sideColor ? `Side Color: ${item.sideColor}` : '';
+        const typeColorText = item.typeColor ? `Type Color: ${item.typeColor}` : '';
 
         itemDiv.innerHTML = `
           <img src="${imageSrc}" alt="${item.productName}" onerror="this.onerror=null;this.src='image.jpeg';">
           <div class="cart-item-details">
             <h3>${item.productName}</h3>
-            <p>${gripText}</p>
-            <p>${connectorText}</p>
+            ${bodyColorText ? `<p>${bodyColorText}</p>` : ''}
+            ${ribColorText ? `<p>${ribColorText}</p>` : ''}
+            ${sideColorText ? `<p>${sideColorText}</p>` : ''}
+            ${typeColorText ? `<p>${typeColorText}</p>` : ''}
+            ${gripText ? `<p>${gripText}</p>` : ''}
+            ${connectorText ? `<p>${connectorText}</p>` : ''}
             <p>Price: $${item.price}</p>
           </div>
           <div class="cart-item-quantity">
