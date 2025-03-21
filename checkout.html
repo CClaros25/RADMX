@@ -61,7 +61,7 @@
     color: #fff;
     border: 1px solid #444;
     border-radius: 5px;
-    box-sizing: border-box; /* Ensures padding and border are included in the element's total width */
+    box-sizing: border-box;
   }
   .order-summary {
     flex: 1;
@@ -80,7 +80,7 @@
     margin-top: 2rem;
   }
   .checkout-btn {
-    background-color: #6a00f4; /* Purple color as accent */
+    background-color: #6a00f4;
     border: none;
     padding: 1rem;
     font-size: 1.2rem;
@@ -90,7 +90,7 @@
     border-radius: 5px;
   }
   .checkout-btn:hover {
-    background-color: #5c00e1; /* Slightly darker purple on hover */
+    background-color: #5c00e1;
   }
   footer {
     background-color: #111;
@@ -98,13 +98,6 @@
     text-align: center;
     font-size: 0.9rem;
     color: #ccc;
-  }
-  /* Image size adjustment */
-  .order-summary img {
-    width: 200px;
-    height: auto;
-    border-radius: 6px;
-    margin-right: 1rem;
   }
   .payment-method {
     display: flex;
@@ -144,7 +137,6 @@
     display: block;
   }
 </style>
-
 </head>
 <body>
   <header>
@@ -265,9 +257,7 @@
   <script>
     const cartItemsList = document.getElementById('cartItemsList');
     const totalAmount = document.getElementById('totalAmount');
-    const paymentMethodIcons = document.querySelectorAll('.payment-method img');
-    const paymentDetails = document.querySelectorAll('.payment-details');
-
+    
     function updateOrderSummary() {
       let cart = JSON.parse(localStorage.getItem('cart')) || [];
       cartItemsList.innerHTML = '';
@@ -288,7 +278,10 @@
             <p>Price: $${item.price}</p>
         `;
 
-        // Check and display customization options
+        // Display selected seat cover type and customization options
+        if (item.seatCoverType) {
+          itemDetails += `<p>Seat Cover Type: ${item.seatCoverType}</p>`;
+        }
         if (item.ribColor) {
           itemDetails += `<p>Rib Color: ${item.ribColor}</p>`;
         }
@@ -300,29 +293,13 @@
         }
 
         itemDetails += `</div>`;
-
         itemDiv.innerHTML = itemDetails;
-
         cartItemsList.appendChild(itemDiv);
         total += item.price * item.quantity;
       });
 
       totalAmount.innerText = `Total: $${total.toFixed(2)}`;
     }
-
-    paymentMethodIcons.forEach(icon => {
-      icon.addEventListener('click', () => {
-        const method = icon.getAttribute('data-method');
-        
-        // Hide all payment details first
-        paymentDetails.forEach(detail => {
-          detail.classList.remove('active');
-        });
-
-        // Show the clicked payment method's details
-        document.getElementById(`${method}Details`).classList.add('active');
-      });
-    });
 
     updateOrderSummary();
   </script>
