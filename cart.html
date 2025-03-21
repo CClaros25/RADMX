@@ -175,7 +175,7 @@
         const bodyColorText = item.bodyColor ? `Body Color: ${item.bodyColor}` : '';
         const ribColorText = item.ribColor ? `Rib Color: ${item.ribColor}` : '';
         const sideColorText = item.sideColor ? `Side Color: ${item.sideColor}` : '';
-        const typeText = item.type ? `Type: ${item.type}` : '';
+        const typeText = item.type ? `${item.type}` : ''; // Now this will just display the type value, no "Type:"
 
         itemDiv.innerHTML = `
           <img src="${imageSrc}" alt="${item.productName}" onerror="this.onerror=null;this.src='image.jpeg';">
@@ -184,7 +184,7 @@
             ${bodyColorText ? `<p>${bodyColorText}</p>` : ''}
             ${ribColorText ? `<p>${ribColorText}</p>` : ''}
             ${sideColorText ? `<p>${sideColorText}</p>` : ''}
-            ${typeText ? `<p>${typeText}</p>` : ''}
+            ${typeText ? `<p>${typeText}</p>` : ''} <!-- Now just the type value -->
             ${gripText ? `<p>${gripText}</p>` : ''}
             ${connectorText ? `<p>${connectorText}</p>` : ''}
             <p>Price: $${item.price}</p>
