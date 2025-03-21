@@ -279,15 +279,29 @@
         
         const imageSrc = `images/${item.productName.toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]/g, '')}.jpeg`;
 
-        itemDiv.innerHTML = `
+        let itemDetails = `
           <img src="${imageSrc}" alt="${item.productName}" onerror="this.onerror=null;this.src='image.jpeg';">
           <div class="cart-item-details">
             <h3>${item.productName}</h3>
             <p>Grip: ${item.grip || 'N/A'}</p>
             <p>Connector: ${item.connector || 'N/A'}</p>
             <p>Price: $${item.price}</p>
-          </div>
         `;
+
+        // Check and display customization options
+        if (item.ribColor) {
+          itemDetails += `<p>Rib Color: ${item.ribColor}</p>`;
+        }
+        if (item.sideColor) {
+          itemDetails += `<p>Side Color: ${item.sideColor}</p>`;
+        }
+        if (item.bodyColor) {
+          itemDetails += `<p>Body Color: ${item.bodyColor}</p>`;
+        }
+
+        itemDetails += `</div>`;
+
+        itemDiv.innerHTML = itemDetails;
 
         cartItemsList.appendChild(itemDiv);
         total += item.price * item.quantity;
